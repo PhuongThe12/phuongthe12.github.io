@@ -31,8 +31,10 @@ Tải và cấu hình OpenCV:
 
 <p class="sub-title" style="font-size: 22px; color: blueviolet;">Tải và cấu hình ZXing</p>
 Để tạo/đọc QR Code trong java, chúng ta cần sử dụng một thư viện thứ 3 có tên là <strong>ZXing(Zebra Crossing)</strong>. Bạn có thể tải các libraries gốc [Tại đây](https://jar-download.com/?search_box=%20zxing) Hoặc:
-    - [zxing core-3.3.0.jar](https://repo1.maven.org/maven2/com/google/zxing/core/3.3.0/core-3.3.0.jar)
-    - [zxing javase-3.3.0.jar](https://repo1.maven.org/maven2/com/google/zxing/javase/3.3.0/javase-3.3.0.jar)
+
+- [zxing core-3.3.0.jar](https://repo1.maven.org/maven2/com/google/zxing/core/3.3.0/core-3.3.0.jar)
+    
+- [zxing javase-3.3.0.jar](https://repo1.maven.org/maven2/com/google/zxing/javase/3.3.0/javase-3.3.0.jar)
 
 Sau khi tải 2 file trên tiến hành thêm thư viện vào project.
     ![]()
