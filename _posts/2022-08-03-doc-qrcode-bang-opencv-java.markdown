@@ -161,3 +161,10 @@ B6: Set action performed button Close Camera
 .
     ![]()
     ![6.png](/img/6.png)
+
+[Source code ở đây](https://github.com/PhuongThe12/DemoReadQRCode)
+
+![]()
+![]()
+![]()
+![]()
