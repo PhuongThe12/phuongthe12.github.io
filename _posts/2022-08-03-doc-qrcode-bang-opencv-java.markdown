@@ -29,7 +29,7 @@ Tải và cấu hình OpenCV:
     ![3.png](/img/3.png)
 
 
-<p class="sub-title">Tải và cấu hình ZXing</p>
+<p class="sub-title" style="font-size: 22px; color: blueviolet;">Tải và cấu hình ZXing</p>
 Để tạo/đọc QR Code trong java, chúng ta cần sử dụng một thư viện thứ 3 có tên là <strong>ZXing(Zebra Crossing)</strong>. Bạn có thể tải các libraries gốc [Tại đây](https://jar-download.com/?search_box=%20zxing) Hoặc:
     - [zxing core-3.3.0.jar](https://repo1.maven.org/maven2/com/google/zxing/core/3.3.0/core-3.3.0.jar)
     - [zxing javase-3.3.0.jar](https://repo1.maven.org/maven2/com/google/zxing/javase/3.3.0/javase-3.3.0.jar)
@@ -38,7 +38,7 @@ Sau khi tải 2 file trên tiến hành thêm thư viện vào project.
     ![]()
     ![4.png](/img/4.png)
 
-<p class="sub-title">Demo đọc QR Code java swing</p>
+<p class="sub-title" style="font-size: 22px; color: blueviolet;">Demo đọc QR Code java swing</p>
 B1: Tạo một project mới thêm thư viện OpenCV, ZXing và cấu hình như các bước trên
 B2: Tạo mới một JFrame (DemoReadQRCode) có giao diện như hình:
     ![]()
