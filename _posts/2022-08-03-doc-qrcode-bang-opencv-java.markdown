@@ -10,23 +10,23 @@ OpenCV là một thư viện mã nguồn mở hàng đầu cho thị giác máy 
 
 Tải và cấu hình OpenCV:
 
-1. Tải và cài đặt OpenCV [Downloads OpenCV](https://opencv.org/releases/)
-    ![]()
-    ![1.png](/img/1.png)
+### 1. Tải và cài đặt OpenCV [Downloads OpenCV](https://opencv.org/releases/)
+![]()
+![1.png](/img/1.png)
 
-2. Tiến hành chạy file vừa tải xuống bạn sẽ nhận được folder opencv
-    ![]()
-    ![2.png](/img/2.png)
+### 2. Tiến hành chạy file vừa tải xuống bạn sẽ nhận được folder opencv
+![]()
+![2.png](/img/2.png)
 
-3. Tiến hành cấu hình OpenCV vào Apache NetBeans   
-    ![]()
-    Tạo project mới trong Apache NetBeans, click chuột phải vào Libraries -> Add JAR/Folder
-    Tìm đến thư mục opencv -> build -> java -> chọn opencv-460.jar(Số hiệu phiên bản tùy vào bản cài đặt trước đó)
+### 3. Tiến hành cấu hình OpenCV vào Apache NetBeans   
+    
+Tạo project mới trong Apache NetBeans, click chuột phải vào Libraries -> Add JAR/Folder
+Tìm đến thư mục opencv -> build -> java -> chọn opencv-460.jar(Số hiệu phiên bản tùy vào bản cài đặt trước đó)
 
-4. Cấu hình VMOptions:
-    ![]()
-    Tạo đường dẫn đến opencv: click chuột phải vào project chọn properties -> chọn run -> Chỏ đường dẫn đến opencv (Ví dụ của mình là: -Djava.library.path="C:\Users\ppolo\Downloads\opencv\build\java\x64")
-    ![3.png](/img/3.png)
+### 4. Cấu hình VMOptions:
+    
+Tạo đường dẫn đến opencv: click chuột phải vào project chọn properties -> chọn run -> Chỏ đường dẫn đến opencv (Ví dụ của mình là: -Djava.library.path="C:\Users\ppolo\Downloads\opencv\build\java\x64")
+![3.png](/img/3.png)
 
 
 <p class="sub-title" style="font-size: 22px; color: blueviolet;">Tải và cấu hình ZXing</p>
@@ -41,12 +41,13 @@ Sau khi tải 2 file trên tiến hành thêm thư viện vào project.
     ![4.png](/img/4.png)
 
 <p class="sub-title" style="font-size: 22px; color: blueviolet;">Demo đọc QR Code java swing</p>
-B1: Tạo một project mới thêm thư viện OpenCV, ZXing và cấu hình như các bước trên
-B2: Tạo mới một JFrame (DemoReadQRCode) có giao diện như hình:
-    ![]()
-    ![5.png](/img/5.png)
 
-B3: Tạo một biến toàn cục VideoCapture, 
+### B1: Tạo một project mới thêm thư viện OpenCV, ZXing và cấu hình như các bước trên
+### B2: Tạo mới một JFrame (DemoReadQRCode) có giao diện như hình:
+![]()
+![5.png](/img/5.png)
+
+### B3: Tạo một biến toàn cục VideoCapture, 
 
     import com.google.zxing.BinaryBitmap;
     import com.google.zxing.MultiFormatReader;
@@ -108,7 +109,7 @@ Tạo hàm mới private Result deCode(byte[] imageData) nhận vào là một m
     }
     
 
-B4: Tạo hàm private void readQRCode() để mở camera và giải mã QR Code
+### B4: Tạo hàm private void readQRCode() để mở camera và giải mã QR Code
 
     private void readQRCode() {
         //Load thư viện
@@ -133,7 +134,7 @@ B4: Tạo hàm private void readQRCode() để mở camera và giải mã QR Cod
             }
         }
 
-B5: Set action performed button Open Camera
+### B5: Set action performed button Open Camera
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {                                        
         th = new Thread(new Runnable() {
@@ -146,7 +147,7 @@ B5: Set action performed button Open Camera
     }    
 
 
-B6: Set action performed button Close Camera
+### B6: Set action performed button Close Camera
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {                                         
         if (capture != null) {
