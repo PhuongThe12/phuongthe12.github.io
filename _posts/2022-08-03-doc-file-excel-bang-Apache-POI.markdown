@@ -17,51 +17,55 @@ Trong Java, JDK không cung cấp trực tiếp API để đọc hay ghi các fi
 
 <p style="color: #610b38; font-size: 22px">Các bước đọc file Excel</p>
 
-B1: Tạo một project mới.
+### B1: Tạo một project mới.
 
-B2: Tải các thư viện 
+### B2: Tải các thư viện 
 - [commons-collections4-4.1.jar](https://bit.ly/2SG4r3Y)
 - [poi-3.17.jar](https://bit.ly/2Y6HRY9)
 - [poi-ooxml-3.17.jar](https://bit.ly/2LJ1leO)
 - [poi-ooxml-schemas-3.17.jar](https://bit.ly/2LHjeL9)
 - [xmlbeans-2.6.0.jar](https://bit.ly/2ybqxBR)
 
-B3: Thêm các thư viện vào project: click chuột phải vào project -> ADD JAR/Folder -> Chọn các file Jar mới tải
-    ![]()
-    ![ExcelLib.png](/img/ExcelLib.png)
+### B3: Thêm các thư viện vào project: click chuột phải vào project -> ADD JAR/Folder -> Chọn các file Jar mới tải
+![]()
+![ExcelLib.png](/img/ExcelLib.png)
 
-B4: Chuẩn bị File Excel
+### B4: Chuẩn bị File Excel
 Đây là [file Excel mẫu](/excel/DemoExcel.xlsx)
 
-B5: Tạo class(DemoReadFileExcel)
+### B5: Tạo class DemoReadFileExcel
+    import java.io.File;
+    import java.io.FileInputStream;
+    import java.io.FileNotFoundException;
+    import java.io.IOException;
+    import java.util.Iterator;
+    import org.apache.poi.ss.usermodel.Cell;
+    import org.apache.poi.ss.usermodel.Row;
+    import org.apache.poi.ss.usermodel.Sheet;
+    import org.apache.poi.ss.usermodel.Workbook;
+    import org.apache.poi.xssf.usermodel.XSSFSheet;
+    import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-B6: Tạo hàm readAll(File file)(hàm này nhận vào file excel và thực hiện in ra màn hình dữ liệu có trong file excel đó) và hàm readByCell(File file, int vRow, int vColumn)(hàm này nhận vào file excel, index của cột và index của dòng)
+    /**
+    *
+    * @author ppolo
+    */
+    public class DemoReadFileExcel {
+        
+    }
+
+### B6: Tạo hàm readAll(File file) thực hiện việc đọc toàn bộ dữ liệu có trong file excel, hàm này nhận vào file excel bạn muốn đọc 
 
     public static void readAll(File file) {
-        FileInputStream fis = null;
+        
+    }
+
+### Tạo ra đối tượng FileInputStream để đọc file
+    FileInputStream fis = null;
         try {
-            fis = new FileInputStream(file);//đọc file 
-
-            XSSFWorkbook wb = new XSSFWorkbook(fis);
-            XSSFSheet sheet = wb.getSheetAt(0);//Lấy trang đầu tiên trong file excel
-            Iterator<Row> itr = sheet.iterator();//Lấy ra các dòng
-
-            while (itr.hasNext()) {//Lặp đến khi hết các dòng trong excel
-                Row row = itr.next();//Lấy dòng tiếp theo
-                Iterator<Cell> cellItr = row.iterator(); // Lấy ra các ô trong dòng row
-
-                while (cellItr.hasNext()) {
-                    Cell cell = cellItr.next();
-                    switch (cell.getCellType()) {
-                        case Cell.CELL_TYPE_STRING:    //field that represents string cell type  
-                            System.out.print(cell.getStringCellValue() + "\t\t\t");
-                            break;
-                        case Cell.CELL_TYPE_NUMERIC:    //field that represents number cell type  
-                            System.out.print(cell.getNumericCellValue() + "\t\t\t");
-                            break;
-                        default:
-                    }
-                }
+            fis = new FileInputStream(file);
+            
+            }
 
                 System.out.println("");
 
@@ -73,7 +77,46 @@ B6: Tạo hàm readAll(File file)(hàm này nhận vào file excel và thực hi
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+### Tạo ra đối tượng XSSFWorkbook và XSSFSheet 
+    XSSFWorkbook wb = new XSSFWorkbook(fis);
+    XSSFSheet sheet = wb.getSheetAt(0);//Lấy trang đầu tiên trong file excel
+    Iterator<Row> itr = sheet.iterator();//Lấy ra các dòng
+
+### Do trong file excel có các dòng và các cột thứ tự các dòng. Các cột sẽ có index từ 0 và tăng 1 và các dòng cũng tương tự như vậy
+
+![]()
+![ExcelIndex.png](/img/ExcelIndex.png)
+
+### B7: Để thực hiện việc đọc file mình sẽ tạo ra một vòng lặp 
+
+    //Vòng lặp đầu sẽ lấy dòng tiếp theo đến khi không còn dòng nào
+    while (itr.hasNext()) {//Lặp đến khi hết các dòng trong excel
+        Row row = itr.next();//Lấy dòng tiếp theo
+        Iterator<Cell> cellItr = row.iterator(); // Lấy ra các ô trong dòng row
+        
+        //Vòng lặp này sẽ lấy ra các ô trong dòng cho đến khi không còn ô nào
+        while (cellItr.hasNext()) {
+            Cell cell = cellItr.next(); //Lấy ra ô(cell) tiếp theo
+            switch (cell.getCellType()) {
+                case Cell.CELL_TYPE_STRING:   //Nếu trong ô có kiểu dữ liệu là text
+                    System.out.print(cell.getStringCellValue() + "\t\t\t");
+                    break;
+                case Cell.CELL_TYPE_NUMERIC:    //Nếu trong ô có kiểu dữ liệu là number
+                    System.out.print(cell.getNumericCellValue() + "\t\t\t");
+                    break;
+                default:
+            }
+            
+        }
+        //Xuống dòng sau các dòng
+        System.out.println("");
+
     }
+    fis.close();//giải phóng fis
+
+
+### B8:Tạo hàm readByCell(File file, int vRow, int vColumn) để đọc một ô bất kỳ trong file excel. Hàm này sẽ nhận vào file excel, thứ tự dòng và thứ tự cột và tiến hành in ra màn hình
 
     public static void readByCell(File file, int vRow, int vColumn) {
         Workbook wb = null;
@@ -96,7 +139,7 @@ B6: Tạo hàm readAll(File file)(hàm này nhận vào file excel và thực hi
     }
 
 
-B7: Tạo hàm main để tiến hành chạy chương trình
+### B9: Tạo hàm main để tiến hành chạy chương trình
 
 -   Đọc file excel với hàm readAll()
 
